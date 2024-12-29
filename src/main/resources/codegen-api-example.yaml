@@ -1,0 +1,41 @@
+openapi: 3.0.0
+info:
+  title: simple-Api-first-approachDemo
+  description: API-first approach example
+  version: 1.0.0
+
+paths:
+  /greetings:
+    get:
+      tags:
+        - greetings
+      summary: get greetings summary
+      description: Get greetings description
+      operationId: getGreetings
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Greetings'
+        404:
+          description: No greetings found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GreetingNotFoundError'
+
+components:
+  schemas:
+    Greetings:
+      type: object
+      properties:
+        hey:
+          type: string
+
+    GreetingNotFoundError:
+      type: object
+      properties:
+        message:
+          type: string
